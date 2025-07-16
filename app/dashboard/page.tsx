@@ -6,6 +6,7 @@ import RecentSearches from "../../components/RecentSearches";
 import UsageStats from "../../components/UsageStats";
 import CRMIntegration from "@/components/CRMIntegration";
 import TeamCollaboration from "@/components/TeamCollaboration";
+import Link from "next/link";
 
 export default async function DashboardPage() {
 	const session = await getServerSession(authOptions);
@@ -28,10 +29,13 @@ export default async function DashboardPage() {
 					<p className="text-gray-600">
 						Transform your cold calls into warm conversations with AI-powered prospect intelligence.
 					</p>
-					<div className="mt-2">
+					<div className="mt-2 flex items-center gap-4">
 						<span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
 							Business Plan
 						</span>
+						<form action="/api/auth/signout" method="POST">
+							<button type="submit" className="ml-4 px-4 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 font-semibold text-sm">Log out</button>
+						</form>
 					</div>
 				</div>
 

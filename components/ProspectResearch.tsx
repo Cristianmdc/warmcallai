@@ -47,13 +47,16 @@ export default function ProspectResearch() {
 			});
 
 			const result = await response.json();
+			console.log("API Response:", result);
 
 			if (!response.ok) {
 				throw new Error(result.error || "Failed to get prospect insights");
 			}
 
+			console.log("Setting Prospect Data:", result.data);
 			setProspectData(result.data);
 		} catch (err) {
+			console.error("Search Error:", err);
 			setError("Failed to get prospect insights. Please try again.");
 		} finally {
 			setIsLoading(false);

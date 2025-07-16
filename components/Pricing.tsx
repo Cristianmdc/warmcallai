@@ -7,14 +7,14 @@ import ButtonCheckout from "./ButtonCheckout";
 
 const Pricing = () => {
   return (
-    <section className="bg-gray-50 overflow-hidden" id="pricing">
+    <section className="bg-gradient-to-br from-blue-900 to-blue-950 overflow-hidden" id="pricing">
       <div className="py-24 px-8 max-w-7xl mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
-          <p className="font-medium text-blue-600 mb-8">Pricing</p>
-          <h2 className="font-bold text-3xl lg:text-5xl tracking-tight text-gray-900">
+          <p className="font-medium text-blue-300 mb-8">Pricing</p>
+          <h2 className="font-bold text-3xl lg:text-5xl tracking-tight text-white">
             Choose Your Path to Sales Success
           </h2>
-          <p className="text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 mt-6 max-w-3xl mx-auto">
             Start free, scale as you grow. Every plan includes the AI intelligence that transforms cold calls into warm conversations.
           </p>
         </div>
@@ -61,7 +61,7 @@ const Pricing = () => {
                     </div>
                   )}
                   <p className={`text-5xl tracking-tight font-extrabold text-gray-900`}>
-                    {plan.price === 0 ? "Free" : `$${plan.price}`}
+                    {plan.name === "Enterprise" ? "Contact" : plan.price === 0 ? "Free" : `$${plan.price}`}
                   </p>
                   {plan.price !== 0 && (
                     <div className="flex flex-col justify-end mb-[4px]">
@@ -100,12 +100,12 @@ const Pricing = () => {
                   </ul>
                 )}
                 <div className="space-y-2">
-                  <ButtonCheckout priceId={plan.priceId}>
-                    {plan.price === 0 ? "Start Free Today" : `Start ${plan.name} Trial`}
+                  <ButtonCheckout priceId={plan.priceId} primary={true}>
+                    {plan.name === "Enterprise" ? "Contact Sales" : plan.price === 0 ? "Start Free Today" : `Start ${plan.name} Trial`}
                   </ButtonCheckout>
 
                   <p className="flex items-center justify-center gap-2 text-sm text-center text-gray-600 font-medium relative">
-                    {plan.price === 0 ? "No credit card required" : "14-day free trial"}
+                    {plan.name === "Enterprise" ? "Custom pricing – contact us" : plan.price === 0 ? "No credit card required" : "14-day free trial"}
                   </p>
                 </div>
               </div>

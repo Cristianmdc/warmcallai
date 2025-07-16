@@ -6,6 +6,7 @@ import Testimonials1 from "@/components/Testimonials1";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
+import ProductShowcase from "@/components/ProductShowcase";
 
 export default function IndexPage() {
 	return (
@@ -15,8 +16,7 @@ export default function IndexPage() {
 
 			{/* Value Proposition Grid */}
 			<FeaturesGrid />
-
-			{/* Social Proof */}
+			<ProductShowcase />
 			<Testimonials1 />
 
 			{/* Pricing Section */}

@@ -6,7 +6,6 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonSignin from "./ButtonSignin";
-import logo from "@/app/icon.png";
 import config from "@/config";
 
 const links: {
@@ -53,15 +52,9 @@ const Header = () => {
             href="/"
             title={`${config.appName} homepage`}
           >
-            <Image
-              src={logo}
-              alt={`${config.appName} logo`}
-              className="w-8"
-              placeholder="blur"
-              priority={true}
-              width={48}
-              height={48}
-            />
+            <span className="w-8 h-8 block">{/* PNG Logo */}
+              <Image src="/logo.svg" width={48} height={48} alt="WarmCallAI logo" priority />
+            </span>
             <span className="font-extrabold text-lg">{config.appName}</span>
           </Link>
         </div>
@@ -120,15 +113,9 @@ const Header = () => {
               title={`${config.appName} homepage`}
               href="/"
             >
-              <Image
-                src={logo}
-                alt={`${config.appName} logo`}
-                className="w-8"
-                placeholder="blur"
-                priority={true}
-                width={48}
-                height={48}
-              />
+              <span className="w-8 h-8 block">{/* PNG Logo */}
+                <Image src="/logoAndName.png" width={48} height={48} alt="WarmCallAI logo" priority />
+              </span>
               <span className="font-extrabold text-lg">{config.appName}</span>
             </Link>
             <button

@@ -9,21 +9,22 @@ import config from "@/config";
 // By default, it doesn't force users to be authenticated. But if they are, it will prefill the Checkout data with their email and/or credit card. You can change that in the API route
 // You can also change the mode to "subscription" if you want to create a subscription instead of a one-time payment
 const ButtonCheckout = ({
-  children,
-  className = "",
   priceId,
-  mode = "payment",
+  mode = "subscription",
+  className,
+  children,
+  primary = false,
 }: {
-  children: React.ReactNode;
-  className?: string;
   priceId?: string;
   mode?: "payment" | "subscription";
+  className?: string;
+  children?: React.ReactNode;
+  primary?: boolean;
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handlePayment = async () => {
     if (!priceId) {
-      // For free trial, redirect to signup
       window.location.href = "/api/auth/signin";
       return;
     }
@@ -51,14 +52,15 @@ const ButtonCheckout = ({
 
   return (
     <button
-      className={`btn btn-primary btn-block group ${className}`}
-      onClick={() => handlePayment()}
+      className={`btn btn-primary btn-lg shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out ${
+        primary
+          ? "bg-blue-600 hover:bg-blue-700 text-white border-blue-700"
+          : "bg-white border-2 border-blue-600 hover:bg-blue-100 text-blue-600"
+      } ${className}`}
+      onClick={handlePayment}
+      disabled={isLoading}
     >
-      {isLoading ? (
-        <span className="loading loading-spinner loading-xs"></span>
-      ) : (
-        children
-      )}
+      {isLoading ? <span className="loading loading-spinner loading-md"></span> : children}
     </button>
   );
 };
